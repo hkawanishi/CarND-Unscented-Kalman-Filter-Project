@@ -24,10 +24,10 @@ UKF::UKF() {
   P_ = MatrixXd(5, 5);
 
   // Process noise standard deviation longitudinal acceleration in m/s^2
-  std_a_ = 0.2;  // initial value was 30
+  std_a_ = 1.8;  // initial value was 30
 
   // Process noise standard deviation yaw acceleration in rad/s^2
-  std_yawdd_ = 0.2;  // initial value was 30
+  std_yawdd_ = 0.7;  // initial value was 30
 
   // Laser measurement noise standard deviation position1 in m
   std_laspx_ = 0.15;
@@ -85,8 +85,8 @@ void UKF::ProcessMeasurement(MeasurementPackage meas_package) {
     // initial P is identity matrix.
     P_ << 1, 0, 0, 0, 0,
         0, 1, 0, 0, 0,
-        0, 0, 1000, 0, 0,
-        0, 0, 0, 1000, 0,
+        0, 0, 1, 0, 0,
+        0, 0, 0, 1, 0,
         0, 0, 0, 0, 1;
 
     if (meas_package.sensor_type_ == MeasurementPackage::RADAR) {
